@@ -2,21 +2,415 @@
   min-height: 100vh;
 }
 
-main {
-  min-height: 100vh;
-  display: grid;
-  place-content: center;
-  padding: 2rem;
-  text-align: center;
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 5rem;
+  padding: 0 7vw;
+
+  background: rgba(250, 248, 243, 0.94);
+  border-bottom: 1px solid rgba(24, 49, 47, 0.1);
+  backdrop-filter: blur(12px);
 }
 
-h1 {
-  margin-bottom: 1rem;
-  font-size: clamp(3rem, 8vw, 6rem);
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  color: #18312f;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 2.6rem;
+  height: 2.6rem;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #f26a21;
+  color: white;
+  font-size: 0.85rem;
+}
+
+.brand-name {
+  font-size: 1.05rem;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navigation a {
+  color: #294744;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.navigation a:hover {
+  color: #d95110;
+}
+
+.navigation .nav-button {
+  padding: 0.8rem 1.15rem;
+
+  border-radius: 999px;
+  background: #18312f;
+  color: white;
+}
+
+.navigation .nav-button:hover {
+  background: #f26a21;
+  color: white;
+}
+
+.menu-button {
+  display: none;
+
+  padding: 0.4rem;
+
+  border: 0;
+  background: transparent;
+  color: #18312f;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: calc(100vh - 5rem);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(3rem, 7vw, 7rem);
+
+  padding: 5rem 7vw;
+
+  background: #faf8f3;
+}
+
+.hero-content {
+  max-width: 42rem;
+}
+
+.eyebrow {
+  margin: 0 0 1.25rem;
+
+  color: #d95110;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+
+  color: #18312f;
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.065em;
+}
+
+.hero-description {
+  max-width: 38rem;
+  margin: 2rem 0 0;
+
+  color: #60716f;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  min-height: 3.2rem;
+  padding: 0.85rem 1.35rem;
+
+  border: 1px solid transparent;
+  border-radius: 999px;
+
+  font-weight: 800;
+  text-decoration: none;
+
+  transition:
+    transform 150ms ease,
+    background 150ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: #f26a21;
+  color: white;
+}
+
+.button-primary:hover {
+  background: #d95110;
+}
+
+.button-secondary {
+  border-color: rgba(24, 49, 47, 0.2);
+  background: transparent;
+  color: #18312f;
+}
+
+.button-secondary:hover {
+  background: white;
+}
+
+.trust-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+
+  margin-top: 2rem;
+}
+
+.trust-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  color: #496360;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.trust-list svg {
   color: #f26a21;
 }
 
-p {
-  color: #294542;
-  font-size: 1.2rem;
+.api-status {
+  width: fit-content;
+  margin-top: 1.5rem;
+  padding: 0.45rem 0.75rem;
+
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.api-status-checking {
+  background: #ece8de;
+  color: #6c665b;
+}
+
+.api-status-healthy {
+  background: #dff3e8;
+  color: #246642;
+}
+
+.api-status-unavailable {
+  background: #f8dddd;
+  color: #923838;
+}
+
+.hero-image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  position: relative;
+
+  width: min(100%, 37rem);
+  min-height: 38rem;
+
+  border-radius: 2rem;
+  background:
+    linear-gradient(rgba(24, 49, 47, 0.08), rgba(24, 49, 47, 0.08)),
+    url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=85")
+      center / cover;
+
+  box-shadow: 0 2rem 4rem rgba(24, 49, 47, 0.18);
+}
+
+.hero-card {
+  position: absolute;
+  left: -2rem;
+  bottom: 2rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 1.15rem 1.3rem;
+
+  border-radius: 1.25rem;
+  background: white;
+  box-shadow: 0 1rem 2rem rgba(24, 49, 47, 0.16);
+}
+
+.hero-card-icon {
+  width: 2.8rem;
+  height: 2.8rem;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #e8f4ee;
+  color: #d95110;
+  font-size: 1.25rem;
+}
+
+.hero-card div {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-card strong {
+  color: #18312f;
+}
+
+.hero-card span:last-child {
+  color: #60716f;
+  font-size: 0.9rem;
+}
+
+.placeholder-section {
+  padding: 7rem 7vw;
+  background: white;
+}
+
+.placeholder-section h2 {
+  max-width: 50rem;
+  margin: 0;
+
+  color: #18312f;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    padding: 0 1.25rem;
+  }
+
+  .menu-button {
+    display: inline-flex;
+  }
+
+  .navigation {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    right: 0;
+
+    display: none;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+
+    padding: 1rem 1.25rem 1.5rem;
+
+    background: #faf8f3;
+    border-bottom: 1px solid rgba(24, 49, 47, 0.1);
+  }
+
+  .navigation-open {
+    display: flex;
+  }
+
+  .navigation a {
+    padding: 1rem 0;
+  }
+
+  .navigation .nav-button {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 4rem 1.25rem;
+  }
+
+  .hero-content {
+    max-width: none;
+  }
+
+  .hero-image-container {
+    justify-content: stretch;
+  }
+
+  .hero-image {
+    width: 100%;
+    min-height: 32rem;
+  }
+
+  .hero-card {
+    left: 1rem;
+  }
+
+  .placeholder-section {
+    padding: 5rem 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-name {
+    font-size: 0.95rem;
+  }
+
+  .hero {
+    padding-top: 3rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.6rem, 18vw, 5rem);
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .trust-list {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .hero-image {
+    min-height: 26rem;
+  }
+
+  .hero-card {
+    right: 1rem;
+    bottom: 1rem;
+  }
 }

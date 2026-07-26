@@ -78,6 +78,33 @@ def create_quote(quote: QuoteRequest):
                 """,
             }
         )
+        resend.Emails.send(
+    {
+        "from": "Clean Tangerine <onboarding@resend.dev>",
+        "to": [quote.email],
+        "subject": "We received your Clean Tangerine quote request",
+        "html": f"""
+            <h2>Thanks for contacting Clean Tangerine, {quote.name}.</h2>
+
+            <p>
+                We received your request for
+                <strong>{quote.service.replace("-", " ").title()}</strong>.
+            </p>
+
+            <p>
+                We'll review the details and follow up with you as soon as possible.
+            </p>
+
+            <p><strong>Your message:</strong></p>
+            <p>{quote.message or "No additional details provided."}</p>
+
+            <p>
+                Thank you,<br>
+                Clean Tangerine
+            </p>
+        """,
+    }
+)
     except Exception as error:
         print("Email delivery failed:", error)
 

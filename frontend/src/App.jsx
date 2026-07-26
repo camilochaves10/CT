@@ -10,6 +10,14 @@ import {
 } from "lucide-react";
 import "./App.css";
 
+const initialFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  service: "",
+  message: "",
+};
+
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const services = [
@@ -19,6 +27,7 @@ const services = [
       "Consistent, detail-focused cleaning for kitchens, bathrooms, bedrooms, and living spaces.",
     icon: Home,
   },
+  
   {
     title: "Deep Cleaning",
     description:
@@ -36,6 +45,9 @@ const services = [
 function App() {
   const [apiStatus, setApiStatus] = useState("checking");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [formData, setFormData] = useState(initialFormData);
+  const [formStatus, setFormStatus] = useState("idle");
+  const [formMessage, setFormMessage] = useState("");
 
   useEffect(() => {
     async function checkApi() {
@@ -59,6 +71,53 @@ function App() {
 
   function closeMenu() {
     setMenuOpen(false);
+  }
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+  
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+  }
+  
+  async function handleQuoteSubmit(event) {
+    event.preventDefault();
+  
+    setFormStatus("submitting");
+    setFormMessage("");
+  
+    try {
+      const response = await fetch(`${API_URL}/quotes`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(
+          data.detail?.[0]?.msg || "Unable to submit your quote request.",
+        );
+      }
+  
+      setFormStatus("success");
+      setFormMessage(
+        `Thanks, ${data.customer_name}. We received your request.`,
+      );
+      setFormData(initialFormData);
+    } catch (error) {
+      console.error("Quote submission failed:", error);
+      setFormStatus("error");
+      setFormMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
+    }
   }
 
   return (
@@ -191,6 +250,116 @@ function App() {
       );
     })}
   </div>
+</section>
+<section className="quote-section" id="quote">
+  <div className="quote-copy">
+    <p className="eyebrow">Request a quote</p>
+
+    <h2>Tell us about your space.</h2>
+
+    <p>
+      Share a few details and we’ll follow up with the next steps for your
+      cleaning estimate.
+    </p>
+
+    <div className="quote-contact">
+      <span>Prefer to speak directly?</span>
+      <a href="tel:+14155550199">(415) 555-0199</a>
+    </div>
+  </div>
+
+  <form className="quote-form" onSubmit={handleQuoteSubmit}>
+    <div className="form-row">
+      <label>
+        Name
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          minLength={2}
+          maxLength={100}
+          autoComplete="name"
+          required
+        />
+      </label>
+
+      <label>
+        Email
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          autoComplete="email"
+          required
+        />
+      </label>
+    </div>
+
+    <div className="form-row">
+      <label>
+        Phone
+        <input
+          type="tel"
+          name="phone"
+          value={formData.phone}
+          onChange={handleInputChange}
+          minLength={7}
+          maxLength={30}
+          autoComplete="tel"
+          required
+        />
+      </label>
+
+      <label>
+        Service
+        <select
+          name="service"
+          value={formData.service}
+          onChange={handleInputChange}
+          required
+        >
+          <option value="">Select a service</option>
+          <option value="home-cleaning">Home Cleaning</option>
+          <option value="deep-cleaning">Deep Cleaning</option>
+          <option value="office-cleaning">Office Cleaning</option>
+        </select>
+      </label>
+    </div>
+
+    <label>
+      Additional details
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={handleInputChange}
+        rows={5}
+        maxLength={1000}
+        placeholder="Tell us about the size of the space, preferred schedule, or anything else we should know."
+      />
+    </label>
+
+    <button
+      className="button button-primary submit-button"
+      type="submit"
+      disabled={formStatus === "submitting"}
+    >
+      {formStatus === "submitting"
+        ? "Sending request..."
+        : "Request my quote"}
+      <ArrowRight size={18} />
+    </button>
+
+    {formMessage && (
+      <p
+        className={`form-message form-message-${formStatus}`}
+        role="status"
+      >
+        {formMessage}
+      </p>
+    )}
+  </form>
 </section>
       </main>
     </>

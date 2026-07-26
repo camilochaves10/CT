@@ -384,6 +384,148 @@
   text-decoration: underline;
 }
 
+.quote-section {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(3rem, 8vw, 7rem);
+
+  padding: 7rem 7vw;
+
+  background: #18312f;
+}
+
+.quote-copy {
+  max-width: 34rem;
+}
+
+.quote-copy .eyebrow {
+  color: #ff9f6c;
+}
+
+.quote-copy h2 {
+  margin: 0;
+
+  color: white;
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.quote-copy > p:not(.eyebrow) {
+  margin: 1.5rem 0 0;
+
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.quote-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  margin-top: 2rem;
+
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.quote-contact a {
+  width: fit-content;
+
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.quote-contact a:hover {
+  color: #ff9f6c;
+}
+
+.quote-form {
+  display: grid;
+  gap: 1.25rem;
+
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+
+  border-radius: 1.75rem;
+  background: #faf8f3;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.16);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.quote-form label {
+  display: grid;
+  gap: 0.55rem;
+
+  color: #18312f;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.quote-form input,
+.quote-form select,
+.quote-form textarea {
+  width: 100%;
+
+  padding: 0.9rem 1rem;
+
+  border: 1px solid rgba(24, 49, 47, 0.18);
+  border-radius: 0.9rem;
+  outline: none;
+
+  background: white;
+  color: #18312f;
+}
+
+.quote-form textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.quote-form input:focus,
+.quote-form select:focus,
+.quote-form textarea:focus {
+  border-color: #f26a21;
+  box-shadow: 0 0 0 3px rgba(242, 106, 33, 0.14);
+}
+
+.submit-button {
+  border: 0;
+  cursor: pointer;
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  transform: none;
+}
+
+.form-message {
+  margin: 0;
+  padding: 0.9rem 1rem;
+
+  border-radius: 0.8rem;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.form-message-success {
+  background: #dff3e8;
+  color: #246642;
+}
+
+.form-message-error {
+  background: #f8dddd;
+  color: #923838;
+}
+
 
 
 @media (max-width: 900px) {
@@ -471,6 +613,15 @@
   .placeholder-section {
     padding: 5rem 1.25rem;
   }
+
+  .quote-section {
+    grid-template-columns: 1fr;
+    padding: 5rem 1.25rem;
+  }
+  
+  .quote-copy {
+    max-width: 40rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -511,5 +662,13 @@
   .hero-card {
     right: 1rem;
     bottom: 1rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .quote-form {
+    padding: 1.25rem;
   }
 }

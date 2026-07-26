@@ -1,8 +1,37 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Check, Menu, X } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  Home,
+  Building2,
+  Sparkles,
+  Menu,
+  X,
+} from "lucide-react";
 import "./App.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
+const services = [
+  {
+    title: "Home Cleaning",
+    description:
+      "Consistent, detail-focused cleaning for kitchens, bathrooms, bedrooms, and living spaces.",
+    icon: Home,
+  },
+  {
+    title: "Deep Cleaning",
+    description:
+      "A thorough top-to-bottom service for spaces that need extra time, care, and attention.",
+    icon: Sparkles,
+  },
+  {
+    title: "Office Cleaning",
+    description:
+      "Flexible cleaning services designed to keep your workplace fresh and professional.",
+    icon: Building2,
+  },
+];
 
 function App() {
   const [apiStatus, setApiStatus] = useState("checking");
@@ -128,10 +157,41 @@ function App() {
           </div>
         </section>
 
-        <section className="placeholder-section" id="services">
-          <p className="eyebrow">Coming next</p>
-          <h2>Professional cleaning for every space.</h2>
-        </section>
+        <section className="services-section" id="services">
+  <div className="services-heading">
+    <div>
+      <p className="eyebrow">Our services</p>
+      <h2>Professional cleaning for every space.</h2>
+    </div>
+
+    <p className="services-intro">
+      Straightforward cleaning services tailored to your home, workplace,
+      schedule, and priorities.
+    </p>
+  </div>
+
+  <div className="services-grid">
+    {services.map((service) => {
+      const Icon = service.icon;
+
+      return (
+        <article className="service-card" key={service.title}>
+          <div className="service-icon">
+            <Icon size={24} />
+          </div>
+
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+
+          <a href="#quote">
+            Get a quote
+            <ArrowRight size={16} />
+          </a>
+        </article>
+      );
+    })}
+  </div>
+</section>
       </main>
     </>
   );

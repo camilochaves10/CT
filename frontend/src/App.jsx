@@ -81,10 +81,28 @@ function App() {
     }));
   }
   
-  async function handleQuoteSubmit(event) {
+  const handleQuoteSubmit = async (event) => {
     event.preventDefault();
   
-    setFormStatus("submitting");
+    if (!formData.name.trim()) {
+      setFormStatus("error");
+      setFormMessage("Please enter your name.");
+      return;
+    }
+  
+    if (!formData.email.trim()) {
+      setFormStatus("error");
+      setFormMessage("Please enter your email.");
+      return;
+    }
+  
+    if (!formData.phone.trim()) {
+      setFormStatus("error");
+      setFormMessage("Please enter your phone number.");
+      return;
+    }
+  
+    setFormStatus("loading");
     setFormMessage("");
   
     try {
@@ -96,29 +114,22 @@ function App() {
         body: JSON.stringify(formData),
       });
   
-      const data = await response.json();
-  
       if (!response.ok) {
-        throw new Error(
-          data.detail?.[0]?.msg || "Unable to submit your quote request.",
-        );
+        throw new Error("Request failed.");
       }
   
       setFormStatus("success");
-      setFormMessage(
-        `Thanks, ${data.customer_name}. We received your request.`,
-      );
+      setFormMessage("");
+  
       setFormData(initialFormData);
+  
     } catch (error) {
-      console.error("Quote submission failed:", error);
       setFormStatus("error");
       setFormMessage(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again.",
+        "Something went wrong. Please try again."
       );
     }
-  }
+  };
 
   return (
     <>
@@ -341,15 +352,30 @@ function App() {
     </label>
 
     <button
-      className="button button-primary submit-button"
-      type="submit"
-      disabled={formStatus === "submitting"}
-    >
-      {formStatus === "submitting"
-        ? "Sending request..."
-        : "Request my quote"}
-      <ArrowRight size={18} />
-    </button>
+  type="submit"
+  disabled={formStatus === "loading"}
+>
+  {formStatus === "loading"
+    ? "Sending..."
+    : "Request Quote"}
+</button>
+
+    {formStatus === "success" && (
+  <div className="success-card">
+    <div className="success-icon">✓</div>
+
+    <h3>Quote Request Received!</h3>
+
+    <p>
+      Thanks for contacting Clean Tangerine.
+      We'll reach out shortly.
+    </p>
+
+    <p>
+      A confirmation email has been sent to your inbox.
+    </p>
+  </div>
+)}
 
     {formMessage && (
       <p

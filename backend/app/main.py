@@ -13,7 +13,8 @@ app = FastAPI(
 allowed_origins = [
     "http://localhost:5173",
     "http://localhost:5174",
-    "https://ct-eight-ashy.vercel.app"
+    "https://cleantangerine.com",
+    "https://www.cleantangerine.com",
 ]
 
 app.add_middleware(

@@ -8,7 +8,7 @@ from app.schemas import QuoteRequest
 
 resend.api_key = settings.resend_api_key
 
-SENDER_EMAIL = "Clean Tangerine <onboarding@resend.dev>"
+SENDER_EMAIL = "Clean Tangerine <cam@cleantangerine.com>"
 
 
 def format_service_name(service: str) -> str:

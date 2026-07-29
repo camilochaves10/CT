@@ -207,22 +207,14 @@ function App() {
                 Satisfaction focused
               </span>
             </div>
-
+{/* 
             <p className={`api-status api-status-${apiStatus}`}>
               API: {apiStatus}
-            </p>
+            </p> */}
           </div>
 
           <div className="hero-image-container">
             <div className="hero-image">
-              <div className="hero-card">
-                <span className="hero-card-icon">✦</span>
-
-                <div>
-                  <strong>Fresh space.</strong>
-                  <span>Clear mind.</span>
-                </div>
-              </div>
             </div>
           </div>
         </section>

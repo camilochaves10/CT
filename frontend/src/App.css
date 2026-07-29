@@ -250,49 +250,6 @@
   box-shadow: 0 2rem 4rem rgba(24, 49, 47, 0.18);
 }
 
-.hero-card {
-  position: absolute;
-  left: -2rem;
-  bottom: 2rem;
-
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-
-  padding: 1.15rem 1.3rem;
-
-  border-radius: 1.25rem;
-  background: white;
-  box-shadow: 0 1rem 2rem rgba(24, 49, 47, 0.16);
-}
-
-.hero-card-icon {
-  width: 2.8rem;
-  height: 2.8rem;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 50%;
-  background: #e8f4ee;
-  color: #d95110;
-  font-size: 1.25rem;
-}
-
-.hero-card div {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-card strong {
-  color: #18312f;
-}
-
-.hero-card span:last-child {
-  color: #60716f;
-  font-size: 0.9rem;
-}
-
 .services-section {
   padding: 7rem 7vw;
   background: #f7f6f1;

@@ -254,6 +254,59 @@ function App() {
     })}
   </div>
 </section>
+<section id="about" className="about-section">
+  <div className="about-content">
+    <p className="eyebrow">About Us</p>
+
+    <h2>Reliable cleaning, delivered with care.</h2>
+
+    <p>
+      Clean Tangerine provides dependable residential and commercial cleaning
+      services with careful attention to detail, clear communication, and
+      respect for every space we enter.
+    </p>
+
+    <div className="about-points">
+      <span>✓ Licensed and insured</span>
+      <span>✓ Dependable service</span>
+      <span>✓ Flexible scheduling</span>
+      <span>✓ Detail-focused cleaning</span>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" className="reviews-section">
+  <div className="reviews-heading">
+    <p className="eyebrow">Customer Reviews</p>
+    <h2>What our customers say.</h2>
+  </div>
+
+  <div className="reviews-grid">
+    <article className="review-card">
+      <p>
+        “Clean Tangerine was professional, punctual, and left our home looking
+        fantastic.”
+      </p>
+      <strong>— Customer Name</strong>
+    </article>
+
+    <article className="review-card">
+      <p>
+        “The entire process was easy, and the attention to detail was excellent.”
+      </p>
+      <strong>— Customer Name</strong>
+    </article>
+
+    <article className="review-card">
+      <p>
+        “Reliable service and great communication. We would absolutely book
+        again.”
+      </p>
+      <strong>— Customer Name</strong>
+    </article>
+  </div>
+</section>
+
 <section className="quote-section" id="quote">
   <div className="quote-copy">
     <p className="eyebrow">Request a quote</p>

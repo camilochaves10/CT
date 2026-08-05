@@ -134,11 +134,13 @@ function App() {
   return (
     <>
       <header className="site-header">
-        <a className="brand" href="#top" onClick={closeMenu}>
-          <span className="brand-mark">CT</span>
-          <span className="brand-name">Clean Tangerine</span>
-        </a>
-
+      <a className="brand" href="#top" onClick={closeMenu}>
+            <img
+        className="brand-logo"
+        src="/clean_tangerine_logo.svg"
+        alt="Clean Tangerine Cleaning Co."
+            />
+      </a>
         <button
           className="menu-button"
           type="button"

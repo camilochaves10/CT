@@ -1,0 +1,29 @@
+<svg viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Clean Tangerine icon</title>
+  <desc id="desc">A stylized tangerine with leaves.</desc>
+
+  <defs>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF8A1C"></stop>
+      <stop offset="100%" stop-color="#F35B04"></stop>
+    </linearGradient>
+  </defs>
+
+  <path d="M126 24 C86 2 43 7 18 33 C53 47 94 49 126 24Z" fill="#18312f"></path>
+
+  <path d="M136 35 C143 -4 173 -25 211 -24 C207 17 177 42 136 35Z" fill="#18312f"></path>
+
+  <circle cx="115" cy="170" r="96" fill="url(#orangeGrad)"></circle>
+
+  <circle cx="115" cy="170" r="82" fill="none" stroke="#FFB15E" stroke-width="5" opacity="0.45"></circle>
+
+  <path d="M31 198 C84 181 143 166 205 157" fill="none" stroke="#FFD1A3" stroke-width="13" stroke-linecap="round" opacity="0.65"></path>
+
+  <path d="M70 210 L115 174 L111 255" fill="none" stroke="#FFD1A3" stroke-width="8" stroke-linecap="round" opacity="0.65"></path>
+
+  <path d="M118 174 L158 243" fill="none" stroke="#FFD1A3" stroke-width="8" stroke-linecap="round" opacity="0.65"></path>
+
+  <path d="M158 166 L188 229" fill="none" stroke="#FFD1A3" stroke-width="8" stroke-linecap="round" opacity="0.65"></path>
+
+  <path d="M54 130 C61 91 84 68 124 60" fill="none" stroke="#FFE0BF" stroke-width="7" stroke-linecap="round" opacity="0.5"></path>
+</svg>

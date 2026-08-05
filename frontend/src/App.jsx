@@ -135,11 +135,13 @@ function App() {
     <>
       <header className="site-header">
       <a className="brand" href="#top" onClick={closeMenu}>
-            <img
-        className="brand-logo"
-        src="/clean_tangerine_logo.svg"
-        alt="Clean Tangerine Cleaning Co."
-            />
+        <img
+          className="brand-icon"
+          src="/clean-tangerine-logo.svg"
+          alt="Clean Tangerine logo"
+        />
+
+        <span className="brand-name">Clean Tangerine</span>
       </a>
         <button
           className="menu-button"
